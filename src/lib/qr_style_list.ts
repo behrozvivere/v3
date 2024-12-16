@@ -1,5 +1,5 @@
 import React from "react";
-import { QrStyleItemProps } from "@/lib/types";
+/*import { QrStyleItemProps } from "@/lib/types";*/
 
 export interface QrStyleItemProps {
   id: string;
