@@ -31,7 +31,7 @@ const auth: AuthOptions = {
   adapter: MongoDBAdapter(
     connectToDatabase().then((res) => res.client),
     {
-      databaseName: "my-app",
+      databaseName: "qrbtf",
     },
   ) as Adapter,
   session: {
