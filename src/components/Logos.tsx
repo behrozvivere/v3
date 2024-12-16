@@ -1,6 +1,6 @@
 import React from "react";
 
-export function QrbtfLogo(props: React.ComponentPropsWithoutRef<"svg">) {
+export function QRNGlogo(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg className="svg" height="100%" viewBox="0 0 120 38" {...props}>
       <path

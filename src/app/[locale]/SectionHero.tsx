@@ -16,7 +16,7 @@ import { Badge } from "@/components/ui/badge";
 import { LucideScan } from "lucide-react";
 import { ScanButton } from "@/components/ScanButton";
 import { Label } from "@/components/ui/label";
-import { QrbtfLogo } from "@/components/Logos";
+import { QRNGlogo } from "@/components/Logos";
 import { useState } from "react";
 import { urlAtom } from "@/lib/states";
 import { useAtom } from "jotai";

@@ -13,7 +13,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { transitionXl, transitionMd, transitionLg } from "@/lib/animations";
-import { Qrng } from "@/components/Logos";
+import { QRNGlogo } from "@/components/Logos";
 import { Container } from "@/components/Containers";
 import { UserButton } from "@/components/UserButton";
 import { ModeToggle } from "@/components/ModeToggle";
@@ -64,7 +64,7 @@ function Logo() {
           className="px-2 -mx-2 flex h-14 items-center"
           onClick={() => setMenuOpen(false)}
         >
-          <Qrng className="h-7" />
+          <QRNGlogo className="h-7" />
         </TrackLink>
       </motion.div>
     </div>
@@ -85,7 +85,7 @@ export function HeroLogo() {
         }}
         transition={transitionMd}
       >
-        <Qrng className="h-12 lg:h-14" />
+        <QRNGlogo className="h-12 lg:h-14" />
       </motion.div>
     </div>
   );
@@ -291,7 +291,7 @@ export function Header() {
         <Container className="h-full">
           <div className="flex items-center justify-between h-full">
             <Link href="/" className="flex items-center gap-2">
-              <Qrng className="dark:invert" />
+              <QRNGlogo className="dark:invert" />
             </Link>
             <div className="flex items-center gap-3">
               <LocaleSwitcher />
