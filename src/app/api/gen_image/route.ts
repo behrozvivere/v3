@@ -1,3 +1,4 @@
+
 // https://developer.mozilla.org/docs/Web/API/ReadableStream#convert_async_iterator_to_stream
 import { getServerSession } from "next-auth";
 import auth, { UserTier } from "@/auth";
@@ -59,7 +60,7 @@ async function genImage(req: object) {
 
 const ratelimit = {
   basic: new Ratelimit({
-    redis: kv,
+    redis: kv as any, // از `any` برای حل مشکل موقت استفاده کنید
     analytics: true,
     prefix: "ratelimit:basic",
     limiter: Ratelimit.slidingWindow(5, "60s"),
