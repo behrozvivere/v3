@@ -16,8 +16,7 @@ import { transitionXl, transitionMd, transitionLg } from "@/lib/animations";
 import { QrbtfLogo } from "@/components/Logos";
 import { Container } from "@/components/Containers";
 import { UserButton } from "@/components/UserButton";
-import { ModeToggle } from "@/components/ModeToggle";
-import LocaleSwitcher from "@/components/LocaleSwitcher";
+
 import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
 import { usePathname } from "@/navigation";
 import { trackEvent, TrackLink } from "@/components/TrackComponents";
@@ -88,6 +87,21 @@ export function HeroLogo() {
         <QrbtfLogo className="h-12 lg:h-14" />
       </motion.div>
     </div>
+  );
+}
+
+export function BorderBottom() {
+  const isTop = useAtomValue(scrollTopAtom);
+  return (
+    <motion.div
+      initial={{
+        opacity: isTop ? 0 : 1,
+      }}
+      animate={{
+        opacity: isTop ? 0 : 1,
+      }}
+      className="absolute bottom-0 left-0 h-[1px] w-full bg-foreground/10 translate-y-[1px]"
+    />
   );
 }
 
@@ -258,7 +272,7 @@ export function Header() {
     },
     {
       name: "Discord",
-      href: "https://discord.gg/BdEVpYdZ",
+      href: "https://discord.gg/V9CNuqYfte",
       target: "_blank",
     },
     {
@@ -287,20 +301,6 @@ export function Header() {
 
   return (
     <>
-      <header className="h-16">
-        <Container className="h-full">
-          <div className="flex items-center justify-between h-full">
-            <Link href="/" className="flex items-center gap-2">
-              <QrbtfLogo className="dark:invert" />
-            </Link>
-            <div className="flex items-center gap-3">
-              <LocaleSwitcher />
-              <ModeToggle />
-            </div>
-          </div>
-        </Container>
-      </header>
-      <HeaderPadding />
       <MobileNavigation links={headerLinks} />
       <DesktopNavigation links={headerLinks} />
     </>
@@ -309,19 +309,4 @@ export function Header() {
 
 export function HeaderPadding() {
   return <div className="h-14" />;
-}
-
-function BorderBottom() {
-  const isTop = useAtomValue(scrollTopAtom);
-  return (
-    <motion.div
-      initial={{
-        opacity: isTop ? 0 : 1,
-      }}
-      animate={{
-        opacity: isTop ? 0 : 1,
-      }}
-      className="absolute bottom-0 left-0 h-[1px] w-full bg-foreground/10 translate-y-[1px]"
-    />
-  );
 }
