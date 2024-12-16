@@ -1,3 +1,4 @@
+/*
 import { notFound } from "next/navigation";
 import { getRequestConfig } from "next-intl/server";
 
@@ -16,5 +17,32 @@ export default getRequestConfig(async ({ locale }) => {
 
   return {
     messages: messages,
+  };
+});
+
+*/
+import { getRequestConfig, GetRequestConfigParams } from "next-intl/server";
+import deepmerge from "deepmerge";
+import { locales } from "@/navigation";
+
+// نوع پیام‌ها را به `AbstractIntlMessages` تغییر دهید.
+import type { AbstractIntlMessages } from "next-intl";
+import { unknown } from "zod";
+
+// تعریف صحیح ساختار پیام‌ها
+type Messages = AbstractIntlMessages;
+
+export default getRequestConfig(async ({ locale }: GetRequestConfigParams) => {
+  // اطمینان از معتبر بودن `locale`
+  if (!locales.includes(locale as any)) unknown();
+
+  // بارگذاری پیام‌ها
+  const userMessages: Messages = (await import(`../messages/${locale}.json`)).default;
+
+  // ادغام پیام‌های کاربر و پیش‌فرض
+  const messages = deepmerge((await import(`../messages/en.json`)).default, userMessages);
+
+  return {
+    messages,
   };
 });

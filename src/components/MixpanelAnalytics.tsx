@@ -31,8 +31,8 @@ export default function MixpanelAnalytics() {
     }
   }, [pathname]);
 
-  // Handle user identification
-  useEffect(() => {
+  // older code
+ /* useEffect(() => {
     if (!isLogout && session?.user) {
       identifyUser(session.user.id, {
         $name: session.user.name,
@@ -43,6 +43,18 @@ export default function MixpanelAnalytics() {
       resetUser();
     }
   }, [isLogout, session]);
+*/
+useEffect(() => {
+  if (!isLogout && session?.user?.id) {
+    identifyUser(session.user.id as string, {
+      $name: session.user.name,
+      $email: session.user.email,
+      $avatar: session.user.image,
+    });
+  } else {
+    resetUser();
+  }
+}, [isLogout, session]);
 
   return null;
 }
