@@ -111,7 +111,11 @@
       "google_play": "Google Play Downloads",
       "qr_created": "QR Codes Created",
       "qr_downloaded": "QR Codes Downloaded",
-      "visitors": "Website Visitors"
+      "visitors": "Website Visitors",
+      "download_count": "Total Downloads",
+      "generate_count": "QR Codes Generated",
+      "page_view": "Page Views",
+      "github_stars": "GitHub Stars"
     },
     "qa": {
       "title": "FAQ",
