@@ -26,7 +26,7 @@ export function GitHubButton() {
     <Button variant="secondary" size="sm" className="overflow-hidden">
       <motion.div className="flex items-center" layout layoutRoot>
         <GitHubIcon className="h-4 mr-2" />
-        <span>GitHub</span>
+        <span>Google Play</span>
 
         <AnimatePresence>
           {!!starCount && (

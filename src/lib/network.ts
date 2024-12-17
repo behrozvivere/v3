@@ -15,34 +15,44 @@ export const http: typeof fetch = async (input, init) => {
 import { toast } from "sonner";
 
 export const http: typeof fetch = async (input, init) => {
-  try {
-    const res = await fetch(input, init);
+  const MAX_RETRIES = 2; // تعداد دفعات تلاش مجدد برای درخواست
+  let retries = 0;
 
-    if (!res.ok) {
-      let msg = `HTTP error! Status: ${res.status}`;
+  while (retries <= MAX_RETRIES) {
+    try {
+      const res = await fetch(input, init);
 
-      try {
-        const contentType = res.headers.get("content-type");
-        if (contentType && contentType.includes("application/json")) {
-          const body = await res.json();
-          if (body && body.error) {
-            msg = body.error;
-          }
+      if (!res.ok) {
+        // خطای مهم برای وضعیت‌های 4xx و 5xx
+        if (res.status >= 500) {
+          console.error(`Server Error: ${res.status}`);
+        } else {
+          console.warn(`Client Error: ${res.status}`);
         }
-      } catch (error) {
-        console.error("Error parsing response:", error);
+
+        // اگر خطا غیر بحرانی باشد، نوتیفیکیشن نمایش داده نمی‌شود
+        if (res.status >= 400 && res.status < 500) {
+          throw new Error("Request failed but no user notification needed.");
+        }
+
+        throw new Error(`HTTP error! Status: ${res.status}`);
       }
 
-      toast.error(msg);
-      throw new Error(msg);
-    }
+      return res; // پاسخ موفق
+    } catch (error) {
+      retries++;
+      console.error(`Attempt ${retries} failed:`, error.message);
 
-    return res;
-  } catch (error) {
-    const msg = error instanceof Error ? error.message : "Network Error";
-    toast.error(msg, {
-      description: error instanceof Error ? error.stack : undefined,
-    });
-    throw error;
+      if (retries > MAX_RETRIES) {
+        // خطای نهایی فقط در صورت شکست همه تلاش‌ها
+        const msg = error instanceof Error ? error.message : "Network Error";
+        toast.error("مشکلی پیش آمد، لطفاً بعداً تلاش کنید.", {
+          description: res?.statusText || msg,
+        });
+        throw error;
+      }
+    }
   }
 };
+
+

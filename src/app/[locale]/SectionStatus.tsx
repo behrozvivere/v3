@@ -16,7 +16,7 @@ export function SectionStatus() {
   const [stats, setStats] = useState<Stats>({
     qrCreated: 0,
     qrDownloaded: 0,
-    visitors: 0,
+    visitors: 0
   });
 
   useEffect(() => {
@@ -24,15 +24,15 @@ export function SectionStatus() {
     const fetchStats = async () => {
       try {
         // Replace this with your actual API endpoint
-        const response = await fetch("/api/stats");
+        const response = await fetch('/api/stats');
         const data = await response.json();
         setStats({
           qrCreated: data.qrCreated || 0,
           qrDownloaded: data.qrDownloaded || 0,
-          visitors: data.visitors || 0,
+          visitors: data.visitors || 0
         });
       } catch (error) {
-        console.error("Failed to fetch statistics:", error);
+        console.error('Failed to fetch statistics:', error);
       }
     };
 
@@ -46,7 +46,7 @@ export function SectionStatus() {
   }, []);
 
   const formatNumber = (num: number) => {
-    return num?.toLocaleString() || "0";
+    return num?.toLocaleString() || '0';
   };
 
   return (

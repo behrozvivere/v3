@@ -272,12 +272,12 @@ export function Header() {
     },
     {
       name: "Discord",
-      href: "https://discord.gg/V9CNuqYfte",
+      href: "https://discord.gg/myjv7BrQ",
       target: "_blank",
     },
     {
-      name: "GitHub",
-      href: "https://github.com/latentcat/qrbtf",
+      name: "Instagram",
+      href: "https://www.instagram.com/bbbeeehrooozzz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
       target: "_blank",
     },
   ];

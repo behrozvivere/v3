@@ -39,14 +39,12 @@ export function SectionHero() {
 
           <p className="text-base lg:text-lg mt-6 text-foreground/70">
             {t("subtitle")}
-            {t("by")}
             <TrackLink
-              trackValue={["latent_cat", "hero"]}
-              href="https://latentcat.com"
+              trackValue={["behrozv", "hero"]}
+              href="https://www.instagram.com/bbbeeehrooozzz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
               target="_blank"
               className="text-foreground underline font-semibold"
             >
-              Latent Cat
             </TrackLink>
             {t("period")}
           </p>
@@ -54,7 +52,7 @@ export function SectionHero() {
           <div className="mt-6 flex gap-3">
             <TrackLink
               trackValue={["join_discord", "hero"]}
-              href="https://discord.gg/V9CNuqYfte"
+              href="https://discord.gg/myjv7BrQ"
               target="_blank"
             >
               <Button size="sm" variant="secondary">
@@ -66,8 +64,8 @@ export function SectionHero() {
               </Button>
             </TrackLink>
             <TrackLink
-              trackValue={["github", "hero"]}
-              href="https://github.com/latentcat/qrbtf"
+              trackValue={["Google Play", "hero"]}
+              href="https://qr-ng.com/"
               target="_blank"
             >
               <GitHubButton />
